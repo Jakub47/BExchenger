@@ -15,14 +15,7 @@ namespace Wymieniator.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var category = new Category
-            {
-                Name = "Fantasy",
-                Description = "Kategoria dla książek fantastycznych",
-                Picture = "Fantasy.png"
-            };
-            db.Categories.Add(category);
-            db.SaveChanges();
+            var lista = db.Books.ToList();
             return View();
         }
     }

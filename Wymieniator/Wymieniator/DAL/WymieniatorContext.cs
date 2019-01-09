@@ -15,6 +15,11 @@ namespace Wymieniator.DAL
 
         }
 
+        static WymieniatorContext()
+        {
+            Database.SetInitializer<WymieniatorContext>(new WymieniatorInitializer());
+        }
+
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Photo> Photos { get; set; }
