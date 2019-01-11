@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using Wymieniator.Migrations;
 using Wymieniator.Models;
 
 namespace Wymieniator.DAL
 {
-    public class WymieniatorInitializer : DropCreateDatabaseAlways<WymieniatorContext>
+    public class WymieniatorInitializer : MigrateDatabaseToLatestVersion<WymieniatorContext,Configuration>
     {
-        private WymieniatorContext db = new WymieniatorContext();
 
-        protected override void Seed(WymieniatorContext context)
-        {
-            SeedData(context);
-            base.Seed(context);
-        }
-
-        private void SeedData(WymieniatorContext context)
+        public static void SeedData(WymieniatorContext context)
         {
             var categories = new List<Category>
             {
@@ -34,8 +29,8 @@ namespace Wymieniator.DAL
                 new Category() {CategoryId = 5, Name = "Sensacyjne", Description = "Książki zawierające elementy sensacji",
                                 Picture = "sensacja.png"},
             };
-            categories.ForEach(a => db.Categories.Add(a));
-            db.SaveChanges();
+            categories.ForEach(a => context.Categories.AddOrUpdate(a));
+            context.SaveChanges();
 
             var books = new List<Book>
             {
@@ -75,10 +70,10 @@ namespace Wymieniator.DAL
                             MainPicture = "DziewczynaKtoraIgralaZOgniem.png"
                     }
             };
-            books.ForEach(a => db.Books.Add(a));
+            books.ForEach(a => context.Books.AddOrUpdate(a));
             try
             {
-                db.SaveChanges();
+                context.SaveChanges();
             }
             catch (DbEntityValidationException e)
             {
