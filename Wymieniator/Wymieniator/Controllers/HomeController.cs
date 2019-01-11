@@ -15,7 +15,6 @@ namespace Wymieniator.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var lista = db.Books.ToList();
             return View();
         }
     }
