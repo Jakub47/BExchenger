@@ -13,7 +13,7 @@ namespace Wymieniator.DAL
 {
     public class WymieniatorInitializer : MigrateDatabaseToLatestVersion<WymieniatorContext,Configuration>
     {
-
+       
         public static void SeedData(WymieniatorContext context)
         {
             var categories = new List<Category>

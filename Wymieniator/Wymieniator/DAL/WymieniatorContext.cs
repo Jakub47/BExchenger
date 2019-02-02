@@ -20,6 +20,7 @@ namespace Wymieniator.DAL
             Database.SetInitializer<WymieniatorContext>(new WymieniatorInitializer());
         }
 
+
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Photo> Photos { get; set; }
@@ -30,6 +31,7 @@ namespace Wymieniator.DAL
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
         }
     }
 }
