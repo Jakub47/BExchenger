@@ -19,15 +19,15 @@ namespace Wymieniator.DAL
             var categories = new List<Category>
             {
                 new Category() {CategoryId = 1, Name = "Fantasy", Description = "Książki zawierające elementy fantasy",
-                                Picture = "fantasy.png"},
+                                Picture = "fantasy.svg"},
                 new Category() {CategoryId = 2, Name = "Horror", Description = "Książki zawierające elementy horroru",
-                                Picture = "horror.png"},
+                                Picture = "horror.svg"},
                 new Category() {CategoryId = 3, Name = "Historyczne", Description = "Książki zawierające elementy historii",
-                                Picture = "naukowe.png"},
+                                Picture = "naukowe.svg"},
                 new Category() {CategoryId = 4, Name = "Slowniki", Description = "Książki slużące do tłumaczeń",
-                                Picture = "slownik.png"},
+                                Picture = "slownik.svg"},
                 new Category() {CategoryId = 5, Name = "Sensacyjne", Description = "Książki zawierające elementy sensacji",
-                                Picture = "sensacja.png"},
+                                Picture = "sensacja.svg"},
             };
             categories.ForEach(a => context.Categories.AddOrUpdate(a));
             context.SaveChanges();

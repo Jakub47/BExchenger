@@ -103,6 +103,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Books\DziewczynaKtoraIgralaZOgniem.png" />
+    <Content Include="Content\Books\Metro2033.png" />
+    <Content Include="Content\Books\Pasek.png" />
+    <Content Include="Content\Books\SlownikANPL.png" />
+    <Content Include="Content\Books\WladcaPierscieniaDP.png" />
+    <Content Include="Content\Books\x3.png" />
+    <Content Include="Content\Category\fantasy.svg" />
+    <Content Include="Content\Category\horror.svg" />
+    <Content Include="Content\Category\naukowe.svg" />
+    <Content Include="Content\Category\sensacja.svg" />
+    <Content Include="Content\Category\slownik.svg" />
     <Content Include="Content\css\sb-admin.css" />
     <Content Include="Content\css\sb-admin.min.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
@@ -1593,6 +1604,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastucture\AppConfig.cs" />
     <Compile Include="Migrations\201902022206391_InitialCreate.cs" />
     <Compile Include="Migrations\201902022206391_InitialCreate.Designer.cs">
       <DependentUpon>201902022206391_InitialCreate.cs</DependentUpon>
