@@ -1597,7 +1597,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ObserveController.cs" />
     <Compile Include="DAL\WymieniatorContext.cs" />
     <Compile Include="DAL\WymieniatorInitializer.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -1605,6 +1607,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastucture\AppConfig.cs" />
+    <Compile Include="Infrastucture\UrlHelpers.cs" />
     <Compile Include="Migrations\201902022206391_InitialCreate.cs" />
     <Compile Include="Migrations\201902022206391_InitialCreate.Designer.cs">
       <DependentUpon>201902022206391_InitialCreate.cs</DependentUpon>
@@ -1628,6 +1631,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Book\Detail.cshtml" />
+    <Content Include="Views\Book\ListC.cshtml" />
+    <Content Include="Views\Observe\AddToObserve.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

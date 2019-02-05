@@ -1,0 +1,11 @@
+﻿@model List<Wymieniator.Models.Book>
+
+@{
+    ViewBag.Title = "ListC";
+}
+
+@foreach(var item in Model)
+{
+    <p>@item.Title</p>
+}
+

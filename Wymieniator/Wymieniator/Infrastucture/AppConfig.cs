@@ -20,5 +20,15 @@ namespace Wymieniator.Infrastucture
                 return _iconsForCategoryFolder;
             }
         }
+
+        private static string _imagesFolder = ConfigurationManager.AppSettings["ImagesFolder"];
+
+        public static string ImagesFolder
+        {
+            get
+            {
+                return _imagesFolder;
+            }
+        }
     }
 }

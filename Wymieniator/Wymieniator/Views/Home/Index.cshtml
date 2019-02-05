@@ -1,5 +1,5 @@
 ﻿@model Wymieniator.ViewModels.HomeViewModel
-
+@using Wymieniator.Infrastucture
 @{
     ViewBag.Title = "Index";
 }
@@ -9,8 +9,8 @@
     @foreach (var category in Model.Categories)
     {
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+            <a class="nav-link" href="@Url.Action("ListC","Book", new { nameOfCategory = category.Name })">
+                <img src="@Url.CategoriesIconsPath(category.Picture)" />
                 <span>@category.Name</span>
             </a>
         </li>
@@ -27,20 +27,22 @@
             <div class="row mb-2 card-deck">
                 @foreach (var element in list)
                 {
-                    <div class="col-sm">
-                        <div class="card">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">@element.Title</h5>
-                                <p class="card-text">@element.ShortDescription</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="@Url.Action("Detail","Book", new { id = element.BookId})">
+                        <div class="col-sm">
+                            <div class="card">
+                                <img class="card-img-top" src="@Url.ImagesPath(element.MainPicture)" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">@element.Title</h5>
+                                    <p class="card-text">@element.ShortDescription</p>
+                                    <a href="@Url.Action("AddToObserve","Observe", new { id = element.BookId})" class="btn btn-primary">Go somewhere</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 }
             </div>
         }
-         @*@for (int i = 0; i < Model.NewBooksFromCategories.Count(); i++)
+        @*@for (int i = 0; i < Model.NewBooksFromCategories.Count(); i++)
             {
                 var element = Model.NewBooksFromCategories.ElementAt(i);
 
