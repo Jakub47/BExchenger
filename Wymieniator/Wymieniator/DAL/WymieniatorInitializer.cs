@@ -11,9 +11,9 @@ using Wymieniator.Models;
 
 namespace Wymieniator.DAL
 {
-    public class WymieniatorInitializer : MigrateDatabaseToLatestVersion<WymieniatorContext,Configuration>
+    public class WymieniatorInitializer : MigrateDatabaseToLatestVersion<WymieniatorContext, Configuration>
     {
-       
+
         public static void SeedData(WymieniatorContext context)
         {
             var categories = new List<Category>
@@ -62,12 +62,18 @@ namespace Wymieniator.DAL
                             BooksForExchange = "Słownik niemiecko-polski|Metro2033", DateOfInsert = DateTime.Now, HardCover = false,
                             MainPicture = "SlownikANPL.png"},
 
-                    new Book() {BookId = 5, CategoryId = 5 , Title = "Dziewczyna, która igrała z ogniem", Publisher = "Czarna Owca",
+                   new Book() {BookId = 5, CategoryId = 5 , Title = "Dziewczyna, która igrała z ogniem", Publisher = "Czarna Owca",
                             FirstNameOfAuthor = "Stieg" , LastNameOfAuthor = "Larsson" , PublicationDate = new DateTime(2011,08,25), Pages = 700,
                             Language = "ENG", Description = "W kolejnej, po Mężczyznach, którzy nienawidzą kobiet, części trylogii Millennium główną bohaterką jest Lisbeth Salander. Seria dramatycznych wypadków wywołuje u Lisbeth wspomnienia mrocznej przeszłości, z którą raz na zawsze postanawia się rozprawić. Dwoje dziennikarzy, Dag i Mia, docierają do niezwykłych informacji na temat rozległej siatki przemycającej z Europy Wschodniej do Szwecj",
                             ShortDescription = "Części trylogii Millennium główną bohaterką ",
                             BooksForExchange = "Wiedzmin", DateOfInsert = DateTime.Now, HardCover = true,
-                            MainPicture = "DziewczynaKtoraIgralaZOgniem.png"
+                            MainPicture = "DziewczynaKtoraIgralaZOgniem.png" },
+                    new Book() {BookId = 6, CategoryId = 1 , Title = "temp", Publisher = "temp2",
+                            FirstNameOfAuthor = "xsd" , LastNameOfAuthor = "qww" , PublicationDate = new DateTime(2008,04,14), Pages = 1092,
+                            Language = "cx", Description = "ss",
+                            ShortDescription = "dd",
+                            BooksForExchange = "qwz", DateOfInsert = DateTime.Now, HardCover = false,
+                            MainPicture = "x3.png",
                     }
             };
             books.ForEach(a => context.Books.AddOrUpdate(a));
