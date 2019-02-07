@@ -23,10 +23,24 @@ namespace Wymieniator.Controllers
             return View(book);
         }
 
-        public ActionResult ListC(string nameOfCategory)
+        public ActionResult ListOfBooksInCategory(string nameOfCategory)
         {
-            var books = db.Books.Where(a => a.Category.Name == nameOfCategory).ToList();
+            if(nameOfCategory == null || nameOfCategory.Equals(string.Empty))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var categories = db.Categories.Include("Books").Where(c => c.Name == nameOfCategory).Single();
+            var books = categories.Books.ToList();
             return View(books);
         }
+
+        [ChildActionOnly]
+        public ActionResult MenuCategory()
+        {
+            var categories = db.Categories.ToList();
+            return PartialView("_MenuCategory", categories);
+        }
+
     }
 }

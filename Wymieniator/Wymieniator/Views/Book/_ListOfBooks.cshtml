@@ -1,0 +1,19 @@
+﻿@model List<Wymieniator.Models.Book>
+@using Wymieniator.Infrastucture
+
+
+<div class="card-deck">
+    @foreach (var element in Model)
+    {
+        <a href="@Url.Action("Detail","Book", new { id = element.BookId})">
+            <div class="card">
+                <img class="card-img-top" src="@Url.ImagesPath(element.MainPicture)" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@element.Title</h5>
+                    <p class="card-text">@element.ShortDescription</p>
+                    <a href="@Url.Action("AddToObserve","Observe", new { id = element.BookId})" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </a>
+    }
+</div>

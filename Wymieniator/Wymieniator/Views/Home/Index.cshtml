@@ -9,7 +9,7 @@
     @foreach (var category in Model.Categories)
     {
         <li class="nav-item">
-            <a class="nav-link" href="@Url.Action("ListC","Book", new { nameOfCategory = category.Name })">
+            <a class="nav-link" href="@Url.Action("ListOfBooksInCategory","Book", new { nameOfCategory = category.Name })">
                 <img src="@Url.CategoriesIconsPath(category.Picture)" />
                 <span>@category.Name</span>
             </a>
@@ -42,39 +42,5 @@
                 }
             </div>
         }
-        @*@for (int i = 0; i < Model.NewBooksFromCategories.Count(); i++)
-            {
-                var element = Model.NewBooksFromCategories.ElementAt(i);
-
-                <div class="row">
-
-                </div>
-
-
-                @if(@(Model.NewBooksFromCategories.ElementAt(i).Category.Name != Model.NewBooksFromCategories.ElementAt(i - 1).Category.Name ? "row" : String.Empty))
-
-                if (i > 0)
-                {
-                    <div style="width: 18rem;" class="card">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">@element.Title</h5>
-                            <p class="card-text">@element.ShortDescription</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="card row" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">@element.Title</h5>
-                            <p class="card-text">@element.ShortDescription</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                }
-            }*@
     </div>
 </div>

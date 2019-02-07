@@ -1,0 +1,14 @@
+﻿@model List<Wymieniator.Models.Book>
+@using Wymieniator.Infrastucture
+
+@{
+    ViewBag.Title = "ListC";
+}
+
+@Html.Action("MenuCategory")
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        @Html.Partial("_ListOfBooks")
+    </div>
+</div>

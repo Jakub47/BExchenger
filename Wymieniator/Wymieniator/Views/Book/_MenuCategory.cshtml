@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Wymieniator.Models.Category>
+@using Wymieniator.Infrastucture
+
+<ul class="sidebar navbar-nav">
+    @foreach (var category in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("ListOfBooksInCategory","Book", new { nameOfCategory = category.Name })">
+                <img src="@Url.CategoriesIconsPath(category.Picture)" />
+                <span>@category.Name</span>
+            </a>
+        </li>
+    }
+</ul>
+
