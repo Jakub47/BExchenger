@@ -1,7 +1,7 @@
 ﻿@model List<Wymieniator.Models.Book>
 @using Wymieniator.Infrastucture
 
-<h2>@Model.</h2>
+<h2>@Model.ElementAt(0).Category.Name</h2>
 
 <div class="row">
     @foreach (var element in Model)

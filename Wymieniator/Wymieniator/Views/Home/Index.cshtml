@@ -24,23 +24,23 @@
         @foreach (var list in Model.NewBooksFromCategories)
         {
             <h2>@list.ElementAt(0).Category.Name</h2>
-            <div class="row mb-2 card-deck">
-                @foreach (var element in list)
-                {
-                    <a href="@Url.Action("Detail","Book", new { id = element.BookId})">
-                        <div class="col-sm">
-                            <div class="card">
-                                <img class="card-img-top" src="@Url.ImagesPath(element.MainPicture)" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">@element.Title</h5>
-                                    <p class="card-text">@element.ShortDescription</p>
-                                    <a href="@Url.Action("AddToObserve","Observe", new { id = element.BookId})" class="btn btn-primary">Go somewhere</a>
+                <div class="row mb-2 card-deck">
+                    @foreach (var element in list)
+                    {
+                        <a href="@Url.Action("Detail","Book", new { id = element.BookId})">
+                            <div class="col-sm">
+                                <div class="card">
+                                    <img class="card-img-top" src="@Url.ImagesPath(element.MainPicture)" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@element.Title</h5>
+                                        <p class="card-text">@element.ShortDescription</p>
+                                        <a href="@Url.Action("AddToObserve","Observe", new { id = element.BookId})" class="btn btn-primary">Go somewhere</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                }
-            </div>
+                        </a>
+                    }
+                </div>
         }
     </div>
 </div>

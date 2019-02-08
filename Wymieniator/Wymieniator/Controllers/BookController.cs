@@ -17,8 +17,13 @@ namespace Wymieniator.Controllers
             return View();
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int? id)
         {
+            if(id == 0 || !id.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var book = db.Books.Find(id);
             return View(book);
         }

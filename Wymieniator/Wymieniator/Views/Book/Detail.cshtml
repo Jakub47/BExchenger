@@ -1,8 +1,78 @@
 ﻿@model Wymieniator.Models.Book
+@using Wymieniator.Infrastucture
 
 @{
     ViewBag.Title = "Detail";
 }
 
-<h2>@Model.Title</h2>
+@Html.Action("MenuCategory")
 
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center">
+                <!-- Zmienić na karulezele gdy zaimplementuje relacje z tabela Photos-->
+                <img class="img-fluid" src="@Url.ImagesPath(Model.MainPicture)" />
+            </div>
+        </div>
+        <div class="row mt-4">
+                <div class="nav flex-column nav-pills col-4 text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Informacje</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Uzytkownik</a>
+                    <a class="nav-link" id="v-pills-books-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Ksiazki do wymiany</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Wiadomosci</a>
+                    <a class="nav-link btn btn-success" href="href="@Url.Action("AddToObserve","Observe", new { id = Model.BookId})">
+                        Dodaj do obserwowanych
+                    </a>
+                </div>
+                <div class="tab-content col-7" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <ul class="list-group">
+                            <li class="list-group-item">Tytuł : <strong>@Model.Title</strong></li>
+                            <li class="list-group-item">Opis : <strong>@Model.Description</strong></li>
+                            <li class="list-group-item">Język: <strong>@Model.Language</strong></li>
+                            <li class="list-group-item">Twarda oprawa: <strong>@Model.HardCover</strong></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <ul class="list-group">
+                            <li class="list-group-item">Imie</li>
+                            <li class="list-group-item">Nazwisko</li>
+                            <li class="list-group-item">Telefon</li>
+                            <li class="list-group-item">Email</li>
+                            <li class="list-group-item">Adres</li>
+                        </ul>
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-books-tab">
+                        <ul class="list-group">
+                            @foreach (string book in Model.BooksForExchange.Split('|'))
+                            {
+                                <li class="list-group-item">@book</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <div class="media">
+                            <img class="mr-3" src="/Content/Category/horror.svg" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0">Media heading</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $('#myTab a').on('click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+    </script>
+}
