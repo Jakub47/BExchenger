@@ -41,6 +41,7 @@ namespace Wymieniator.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 60000)]
         public ActionResult MenuCategory()
         {
             var categories = db.Categories.ToList();
