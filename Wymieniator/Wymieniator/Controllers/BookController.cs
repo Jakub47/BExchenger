@@ -48,5 +48,12 @@ namespace Wymieniator.Controllers
             return PartialView("_MenuCategory", categories);
         }
 
+        public ActionResult BooksPrompt(string term)
+        {
+            var books = db.Books.Where(a => !a.Hidden && a.Title.ToLower().Contains(term.ToLower())).
+                        Take(5).Select(a => new { label = a.Title });
+            return Json(books, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
