@@ -60,7 +60,7 @@ namespace Wymieniator.Models
         public Accepted Accepted { get; set; }
 
         //Lists
-        List<PositionOfExchange> PositionOfExchange { get; set; }
+        public List<PositionOfExchange> PositionOfExchange { get; set; }
         public virtual ICollection<Book> BooksToExchange { get; set; }
     }
 

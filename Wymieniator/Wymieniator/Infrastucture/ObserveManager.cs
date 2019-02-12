@@ -33,7 +33,6 @@ namespace Wymieniator.Infrastucture
 
             return observe;
         }
-
         public void AddToObserver(int bookId)
         {
             var observer = GetObserver();
@@ -78,6 +77,40 @@ namespace Wymieniator.Infrastucture
                 }
             }
             return 0;
+        }
+        public decimal GetAmountFromObserver()
+        {
+            var observer = GetObserver();
+            return observer.Sum(o => o.Amount);
+        }
+        public Exchange CreateExchange(Exchange newExchange,string userId)
+        {
+            var observer = GetObserver();
+            newExchange.DateOfInsert = DateTime.Now;
+            //newExchange.userId = userId;
+            db.Exchanges.Add(newExchange);
+            if(newExchange.PositionOfExchange == null)
+            {
+                newExchange.PositionOfExchange = new List<PositionOfExchange>();
+            }
+
+            foreach (var Element in observer)
+            {
+                var newPosition = new PositionOfExchange()
+                {
+
+                    BookId = Element.Book.BookId,
+                };
+
+                newExchange.PositionOfExchange.Add(newPosition);
+            }
+            db.SaveChanges();
+            return newExchange;
+        }
+
+        public void Empty()
+        {
+            session.Set<List<PositionOfExchange>>(Consts.ObserverSessionKey, null);
         }
     }
 }
