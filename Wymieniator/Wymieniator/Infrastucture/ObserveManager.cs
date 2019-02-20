@@ -78,7 +78,7 @@ namespace Wymieniator.Infrastucture
             }
             return 0;
         }
-        public decimal GetAmountFromObserver()
+        public int GetAmountFromObserver()
         {
             var observer = GetObserver();
             return observer.Sum(o => o.Amount);

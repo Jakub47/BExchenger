@@ -38,5 +38,10 @@ namespace Wymieniator.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public int GetAmountOfElementsInObserver()
+        {
+            return observeManager.GetAmountFromObserver();
+        }
     }
 }
