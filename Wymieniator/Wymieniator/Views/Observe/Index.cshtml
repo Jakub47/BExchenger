@@ -67,24 +67,23 @@
                 var $this = $(this);
                 var recordDoUsuniecia = $this.attr("data-id");
                 if (recordDoUsuniecia != '') {
-                    $.post("/Koszyk/UsunZKoszyka", { "ZwierzeId": recordDoUsuniecia }, function (respons) {
-                        if (respons.IloscPozycjiUsuwanej == 0) {
-                            $('#koszyk-wiersz-' + respons.IdPozycjiUsuwanej).fadeOut('slow', function () {
-                                if (respons.KoszykIloscPozycji == 0) {
+                    $.post("/Observe/DeleteFromObserve", { "BookId": recordDoUsuniecia }, function (respons) {
+                        if (respons.AmountOfDeletingItems == 0) {
+                            $('#koszyk-wiersz-' + respons.IdOfPosition).fadeOut('slow', function () {
+                                if (respons.ObserverAmount == 0) {
                                     $('#koszyk-empty-message').removeClass("hidden");
                                 }
                             });
                         }
                         else {
-                            $('#koszyk-ilosc-pozycji-' + respons.IdPozycjiUsuwanej).text(response.IloscPozycjiUsuwanej);
+                            $('#koszyk-ilosc-pozycji-' + respons.IdOfPosition).text(response.AmountOfDeletingItems);
                         }
-                        if (respons.KoszykIloscPozycji == 0) {
+                        if (respons.ObserverAmount == 0) {
                             //$('#koszyk-button-zaplac').addClass('hidden');
                             //$('#CenaCalkowita').addClass('invisible');
                             location.reload();
                         }
-                        $('#calkowita-cena-wartosc').text(respons.KoszykCenaCalkowita);
-                        $('#koszyk-naglowek-ilosc-elementow').text(respons.KoszykIloscPozycji);
+                        $('#observe-header-amount-elements').text(respons.ObserverAmount);
                     });
                     return false;
                 }

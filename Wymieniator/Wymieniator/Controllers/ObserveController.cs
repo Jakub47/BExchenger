@@ -43,5 +43,19 @@ namespace Wymieniator.Controllers
         {
             return observeManager.GetAmountFromObserver();
         }
+
+        public ActionResult DeleteFromObserve(int BookId)
+        {
+            int ObserverAmount = observeManager.DeleteFromObserver(BookId);
+            int ObserverPositionAmount = observeManager.GetAmountFromObserver();
+
+            var valuee = new ObserveDeleteViewModel
+            {
+                IdOfPosition = BookId,
+                ObserverAmount = ObserverPositionAmount,
+                AmountOfDeletingItems = ObserverAmount
+            };
+            return Json(valuee);
+        }
     }
 }

@@ -23,7 +23,7 @@
         <!-- Custom styles for this template-->
         <link href="@Url.Content("~/Content/css/sb-admin.css")" rel="stylesheet" />*@
     @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
-    
+
 
 </head>
 <body id="page-top">
@@ -37,11 +37,10 @@
         <a class="nav-link" href="hh.html">Features</a>
         <a class="nav-link" href="hh.html">Features</a>
 
-        <p class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">koszyk (<span id="observe-header-amount-elements">@Html.Action("GetAmountOfElementsInObserver", "Observer")</span>)</p>
         <!-- Navbar Search -->
         <form id="search-form" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <div class="input-group">
-                <input type="search" id="search-filter" name="searchQuery" data-autocomplete-source="@Url.Action("BooksPrompt","Book")" class="form-control" placeholder="Search for..." >
+                <input type="search" id="search-filter" name="searchQuery" data-autocomplete-source="@Url.Action("BooksPrompt","Book")" class="form-control" placeholder="Search for...">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search"></i>
@@ -74,6 +73,11 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
                 </div>
+            </li>
+            <li class="nav-item" style="color: white;">
+                <a class="nav-link" href="hh.html">
+                    Koszyk(<span id="observe-header-amount-elements">@Html.Action("GetAmountOfElementsInObserver", "Observe")</span>)
+                </a>
             </li>
         </ul>
 

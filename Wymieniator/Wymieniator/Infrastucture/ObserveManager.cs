@@ -39,7 +39,7 @@ namespace Wymieniator.Infrastucture
             var observerPosition = observer.Find(b => b.Book.BookId == bookId);
 
             if (observerPosition != null)
-                observerPosition.Amount++;
+                observerPosition.Amount = observerPosition.Amount;
             else
             {
                 var bookToAdd = db.Books.Where(b => b.BookId == bookId).SingleOrDefault();
@@ -53,7 +53,7 @@ namespace Wymieniator.Infrastucture
                     };
                     observer.Add(newObserverPosition);
                 }
-            }
+          }
 
             session.Set(Consts.ObserverSessionKey, observer);
 
