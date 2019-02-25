@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles
+{
+        
+}
+
+@Html.Action("MenuCategory")
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</div>
+
+
+@section Scripts
+{
+    @RenderSection("Scripts", required: false)
+}
+
