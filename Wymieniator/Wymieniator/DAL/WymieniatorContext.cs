@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -8,7 +9,7 @@ using Wymieniator.Models;
 
 namespace Wymieniator.DAL
 {
-    public class WymieniatorContext : DbContext
+    public class WymieniatorContext : IdentityDbContext<ApplicationUser>
     {
         public WymieniatorContext() : base("WymieniatorContext")
         {
@@ -20,6 +21,10 @@ namespace Wymieniator.DAL
             Database.SetInitializer<WymieniatorContext>(new WymieniatorInitializer());
         }
 
+        public static WymieniatorContext Create()
+        {
+            return new WymieniatorContext();
+        }
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }

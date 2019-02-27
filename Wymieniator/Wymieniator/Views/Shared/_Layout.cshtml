@@ -63,7 +63,7 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
-            <li class="nav-item dropdown no-arrow">
+            @*<li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user-circle fa-fw"></i>
                 </a>
@@ -73,7 +73,8 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
                 </div>
-            </li>
+            </li>*@
+            @Html.Partial("_LoginPartial")
             <li class="nav-item" style="color: white;">
                 <a class="nav-link" href="hh.html">
                     Koszyk(<span id="observe-header-amount-elements">@Html.Action("GetAmountOfElementsInObserver", "Observe")</span>)
