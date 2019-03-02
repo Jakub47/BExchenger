@@ -13,6 +13,7 @@ using Wymieniator.ViewModels;
 
 namespace Wymieniator.Controllers
 {
+    [Authorize]
     public class ManageController : Controller
     {
         public enum ManageMessageId

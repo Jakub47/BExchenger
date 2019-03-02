@@ -1,0 +1,119 @@
+﻿@model Wymieniator.ViewModels.ManageCredentialsViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <h2 style="margin-bottom: 30px">Twoje dane</h2>
+        @using (@Html.BeginForm("ChangeProfile", "Manage"))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(o => o.UserInformation.FirstName, "Imię:")
+                    @Html.TextBoxFor(o => o.UserInformation.FirstName, new { @class = "form-control", placeholder = "Imię" })
+                    @Html.ValidationMessageFor(o => o.UserInformation.FirstName)
+                </div>
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(o => o.UserInformation.LastName, "Nazwisko:")
+                    @Html.TextBoxFor(o => o.UserInformation.LastName, new { @class = "form-control", placeholder = "Nazwisko" })
+                    @Html.ValidationMessageFor(o => o.UserInformation.LastName)
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-5 mb-3">
+                    @Html.LabelFor(o => o.UserInformation.Adress, "Adres")
+                    @Html.TextBoxFor(o => o.UserInformation.Adress, new { @class = "form-control", placeholder = "Ulica" })
+                    @Html.ValidationMessageFor(o => o.UserInformation.Adress)
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(o => o.UserInformation.Town, "Miasto")
+                    @Html.TextBoxFor(o => o.UserInformation.Town, new { @class = "form-control", placeholder = "Miasto" })
+                    @Html.ValidationMessageFor(o => o.UserInformation.Town)
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    @Html.LabelFor(o => o.UserInformation.PostCode, "Kod pocztowy")
+                    @Html.TextBoxFor(o => o.UserInformation.PostCode, new { @class = "form-control", placeholder = "Kod" })
+                    @Html.ValidationMessageFor(o => o.UserInformation.PostCode)
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(o => o.UserInformation.PhoneNumber, "Numer telefonu")
+                    @Html.TextBoxFor(o => o.UserInformation.PhoneNumber, new { @class = "form-control", placeholder = "Telefon" })
+                    @Html.ValidationMessageFor(o => o.UserInformation.PhoneNumber)
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(o => o.UserInformation.Email, "Adres e-mail")
+                    @Html.TextBoxFor(o => o.UserInformation.Email, new { @class = "form-control", placeholder = "E-mail" })
+                    @Html.ValidationMessageFor(o => o.UserInformation.Email)
+                </div>
+            </div>
+            <input type="submit" value="Potwierdź" class="submitLink btn btn-primary" />
+        }
+
+
+        <h2 style="margin-bottom: 30px; margin-top: 20px;">Zmiana hasła</h2>
+
+        @using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="invalid-feedback">
+                @Html.ValidationMessage("password-error", "")
+            </div>
+
+            if (Model.Message.HasValue)
+            {
+                <div class="invalid-feedback text-danger">
+                    @switch (Model.Message)
+                    {
+                        case Wymieniator.Controllers.ManageController.ManageMessageId.ChangePasswordSuccess:
+                            @: Hasło zmienione pomyślnie!
+                            break;
+                        case Wymieniator.Controllers.ManageController.ManageMessageId.Error:
+                            @: Wystąpił błąd
+                            break;
+                    }
+                </div>
+            }
+
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(o => o.ChangePasswordViewModel.OldPassword, "Obecne hasło:")
+                    @Html.PasswordFor(o => o.ChangePasswordViewModel.OldPassword, new { @class = "form-control", placeholder = "Obecne hasło" })
+                    @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.OldPassword)
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(o => o.ChangePasswordViewModel.NewPassword, "Nowe hasło:")
+                    @Html.PasswordFor(o => o.ChangePasswordViewModel.NewPassword, new { @class = "form-control", placeholder = "Nowe hasło" })
+                    @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.NewPassword)
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(o => o.ChangePasswordViewModel.ConfirmPassword, "Potwierdź hasło:")
+                    @Html.PasswordFor(o => o.ChangePasswordViewModel.ConfirmPassword, new { @class = "form-control", placeholder = "Wpisz ponownie nowe hasło" })
+                    @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.ConfirmPassword)
+                </div>
+            </div>
+            <input type="submit" value="Zmień Hasło" class="submitLink btn btn-primary" />
+        }
+    </div>
+</div>
+
+
+@section Scripts
+{
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+

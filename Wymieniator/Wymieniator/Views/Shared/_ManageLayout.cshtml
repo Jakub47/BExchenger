@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewBag.Title</title>
+    @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
+    @RenderSection("Styles", required: false)
+</head>
+
+
+<body id="page-top">
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+        <a class="nav-link" href="@Url.Action("Index", "Home")">Strona Główna</a>
+        <a class="nav-link" href="@Url.Action("Index", "Manage")">Twoje Dane</a>
+        <a class="nav-link" href="@Url.Action("ListOfBooks", "Manage")">Twoje Książki</a>
+        <a class="nav-link" href="@Url.Action("AddBook", "Manage")">Dodaj Książke</a>
+        @if (@User.IsInRole("Admin"))
+        {
+            <a class="nav-link" href="@Url.Content("~/elmah")">
+                Logi
+            </a>
+            <a class="nav-link" href="@Url.Content("~/hangfire")">
+                Jobs
+            </a>
+        }
+
+        <!-- Navbar Search -->
+        @*<form id="search-form" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input type="search" id="search-filter" name="searchQuery" data-autocomplete-source="@Url.Action("BooksPrompt","Book")" class="form-control" placeholder="Search for...">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>*@
+
+        <ul class="navbar-nav form-inline ml-auto my-md-0">
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-envelope fa-fw"></i>
+                    <span class="badge badge-danger">7</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            @Html.Partial("_LoginPartial")
+            <li class="nav-item" style="color: white;">
+                <a class="nav-link" href="hh.html">
+                    Koszyk(<span id="observe-header-amount-elements">@Html.Action("GetAmountOfElementsInObserver", "Observe")</span>)
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <div id="wrapper">
+        @RenderBody()
+
+        <!-- Sticky Footer -->
+        @*<footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © Your Website 2018</span>
+                </div>
+            </div>
+        </footer>*@
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryAndjqueryUIAndFilesForWebsite")
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
